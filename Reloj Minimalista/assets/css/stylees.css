@@ -1,0 +1,17 @@
+#test {
+    margin-bottom: 50px;
+}
+
+
+.clock {
+    text-align: center;
+}
+
+.time {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 1.5rem;
+}

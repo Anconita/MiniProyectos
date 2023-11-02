@@ -1,3 +1,11 @@
+@import url(./stylees.css);
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -8,22 +16,4 @@ body {
     background-color: #1a1a1a;
     color: #fff;
     font-family: 'Arial', sans-serif;
-}
-
-#test {
-    margin-bottom: 50px;
-}
-
-
-.clock {
-    text-align: center;
-}
-
-.time {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.date {
-    font-size: 1.5rem;
 }
