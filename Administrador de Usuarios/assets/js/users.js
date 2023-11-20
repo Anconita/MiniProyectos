@@ -267,6 +267,7 @@ function mostrarUsuarios(usuarioFiltrado) {
             </tr>
             `
     });
+    delete_selected.style.display = (usuarios.length === 0) ? 'none' : 'block';
 }
 
 function editarUsuario(id) {
