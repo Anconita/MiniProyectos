@@ -357,17 +357,9 @@ function mostrarFormulario() {
 function ocultarFormulario() {
     addUserForm.removeAttribute('id');
     darkLayer.removeAttribute('id');
-    limpiarFormulario()
+    addUserForm.reset()
 }
 
-function limpiarFormulario() {
-    var inputs = addUserForm.getElementsByTagName('input');
-    for (var i = 0; i < inputs.length; i++) {
-        if (inputs[i].type !== 'button') {
-            inputs[i].value = '';
-        }
-    }
-}
 mostrarUsuarios()
 
 
@@ -394,6 +386,5 @@ document.querySelector('.tableBody').addEventListener('click', (event) => {
         }
     }
 });
-
 
 
