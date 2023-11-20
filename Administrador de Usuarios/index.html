@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <title>Administrador de usuarios</title>
+</head>
+
+<body>
+    <div class="darkLayer"></div>
+    <header>
+        <img class="logo" src="./assets/img/logo.png" title="Logo Administrador">
+    </header>
+    <main>
+        <section class="menu_section">
+            <ul>
+                <li>
+                    <i class="fa-solid fa-address-book"></i>
+                    Inicio
+                </li>
+                <li class="active">
+                    <i class="fa-solid fa-user"></i>
+                    Usuarios
+                </li>
+                <li>
+                    <i class="fa-solid fa-gear"></i>
+                    Configuración
+                </li>
+            </ul>
+
+            <div class="contenedor_btn_actualizarCuenta">
+                <button id="btn_actualizarCuenta">Actualizar a Pro</button>
+            </div>
+        </section>
+        <section class="data_section">
+            <h2>Lista de Usuarios</h2>
+            <input type="search" class="search" name="search" placeholder="Buscar por Nombre">
+            <div class="table_container">
+                <table class="user_table">
+                    <thead class="tableHead">
+                        <tr>
+                            <th class="th_checkbox">Tds.</th>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Fecha Nacimiento</th>
+                            <th>Localidad</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tableBody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="container_actionButtons">
+                <button class="delete_selected">Eliminar Seleccionados</button>
+                <button class="add_user">Añadir Nuevo Usuario</button>
+            </div>
+        </section>
+
+        <form class="addUserForm">
+
+            <input type="hidden" name="id" id="id">
+
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="surname">Apellido:</label>
+            <input type="text" id="surname" name="surname" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="birthDate">Fecha de Nacimiento:</label>
+            <input type="date" id="birthDate" name="birthDate" required>
+
+            <label for="location">Localidad:</label>
+            <select id="location" name="location" required>
+                <option value="" disabled selected>Seleccione un país</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Mexico">México</option>
+                <option value="Espana">España</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Peru">Perú</option>
+                <option value="Venezuela">Venezuela</option>
+                <option value="Chile">Chile</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Cuba">Cuba</option>
+            </select>
+
+            <button class="btn_form" type="submit">Agregar Usuario</button>
+        </form>
+
+    </main>
+
+
+    <!--? SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--? FontAwesome -->
+    <script src="https://kit.fontawesome.com/06574022d8.js" crossorigin="anonymous"></script>
+
+    <!--? Administrador de Usuarios -->
+    <script src="./assets/js/users.js"></script>
+</body>
+
+</html>
