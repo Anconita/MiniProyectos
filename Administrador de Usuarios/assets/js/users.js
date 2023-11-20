@@ -144,9 +144,6 @@ let usuarios = [
     }
 ];
 
-
-
-
 //? Mostrar Formulario
 add_user.addEventListener('click', () => {
     btn_form.removeAttribute('id', 'btn_form')
@@ -267,7 +264,9 @@ function mostrarUsuarios(usuarioFiltrado) {
             </tr>
             `
     });
+    delete_selected.style.display = (usuarios.length === 0) ? 'none' : 'block';
 }
+mostrarUsuarios()
 
 function editarUsuario(id) {
     const userEdit = usuarios.find((usuario) => {
@@ -360,9 +359,6 @@ function ocultarFormulario() {
     addUserForm.reset()
 }
 
-mostrarUsuarios()
-
-
 th_checkbox.addEventListener('click', () => {
     const checkboxes = document.querySelectorAll('.select_user_body');
 
@@ -386,5 +382,4 @@ document.querySelector('.tableBody').addEventListener('click', (event) => {
         }
     }
 });
-
 
