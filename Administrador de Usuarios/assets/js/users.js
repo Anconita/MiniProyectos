@@ -313,6 +313,10 @@ function openForm() {
 function closeForm() {
     darkLayer.removeAttribute('id', 'darkLayer');
     addUserForm.removeAttribute('id', 'addUserForm');
+    resetForm()
+}
+
+function resetForm() {
     addUserForm.reset()
     addUserForm.elements.id.value = ''
     btn_form.removeAttribute('id', 'btn_form')
