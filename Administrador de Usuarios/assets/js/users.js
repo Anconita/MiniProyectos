@@ -1,305 +1,274 @@
-const tableBody = document.querySelector('.tableBody');
-const search = document.querySelector('.search');
+const darkLayer = document.querySelector('.darkLayer');
 const addUserForm = document.querySelector('.addUserForm');
 const add_user = document.querySelector('.add_user');
-const darkLayer = document.querySelector('.darkLayer')
+const tableBody = document.querySelector('.tableBody');
+const search = document.querySelector('.search');
 const btn_form = document.querySelector('.btn_form');
 const delete_selected = document.querySelector('.delete_selected')
 const th_checkbox = document.querySelector('.th_checkbox')
-let usuarios = [
+let users = [
     {
         id: crypto.randomUUID(),
-        nombre: "Juan",
-        apellido: "Pérez",
+        name: "Juan",
+        lastName: "Pérez",
         email: "juan.perez@example.com",
-        fechaNacimiento: "1998-05-15",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1998-05-15",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "María",
-        apellido: "García",
+        name: "María",
+        lastName: "García",
         email: "maria.garcia@example.com",
-        fechaNacimiento: "2001-11-30",
-        localidad: "Chile",
-        activo: false
+        birthDate: "2001-11-30",
+        location: "Chile",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Carlos",
-        apellido: "Rodríguez",
+        name: "Carlos",
+        lastName: "Rodríguez",
         email: "carlos.rodriguez@example.com",
-        fechaNacimiento: "1995-02-10",
-        localidad: "Venezuela",
-        activo: false
+        birthDate: "1995-02-10",
+        location: "Venezuela",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Ana",
-        apellido: "Martínez",
+        name: "Ana",
+        lastName: "Martínez",
         email: "ana.martinez@example.com",
-        fechaNacimiento: "1999-08-22",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1999-08-22",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Pedro",
-        apellido: "López",
+        name: "Pedro",
+        lastName: "López",
         email: "pedro.lopez@example.com",
-        fechaNacimiento: "1997-04-05",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1997-04-05",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Luisa",
-        apellido: "Herrera",
+        name: "Luisa",
+        lastName: "Herrera",
         email: "luisa.herrera@example.com",
-        fechaNacimiento: "2002-07-18",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "2002-07-18",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Roberto",
-        apellido: "González",
+        name: "Roberto",
+        lastName: "González",
         email: "roberto.gonzalez@example.com",
-        fechaNacimiento: "1996-10-03",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1996-10-03",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Laura",
-        apellido: "Sánchez",
+        name: "Laura",
+        lastName: "Sánchez",
         email: "laura.sanchez@example.com",
-        fechaNacimiento: "1998-01-20",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1998-01-20",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Javier",
-        apellido: "Torres",
+        name: "Javier",
+        lastName: "Torres",
         email: "javier.torres@example.com",
-        fechaNacimiento: "1994-12-08",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1994-12-08",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Carmen",
-        apellido: "Jiménez",
+        name: "Carmen",
+        lastName: "Jiménez",
         email: "carmen.jimenez@example.com",
-        fechaNacimiento: "1997-09-14",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1997-09-14",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Daniel",
-        apellido: "Ramírez",
+        name: "Daniel",
+        lastName: "Ramírez",
         email: "daniel.ramirez@example.com",
-        fechaNacimiento: "1999-03-25",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1999-03-25",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Sofía",
-        apellido: "Medina",
+        name: "Sofía",
+        lastName: "Medina",
         email: "sofia.medina@example.com",
-        fechaNacimiento: "1995-06-12",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1995-06-12",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Eduardo",
-        apellido: "Fernández",
+        name: "Eduardo",
+        lastName: "Fernández",
         email: "eduardo.fernandez@example.com",
-        fechaNacimiento: "2001-02-28",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "2001-02-28",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Patricia",
-        apellido: "Ruiz",
+        name: "Patricia",
+        lastName: "Ruiz",
         email: "patricia.ruiz@example.com",
-        fechaNacimiento: "1996-07-07",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1996-07-07",
+        location: "Argentina",
+        active: false
     },
     {
         id: crypto.randomUUID(),
-        nombre: "Francisco",
-        apellido: "Herrera",
+        name: "Francisco",
+        lastName: "Herrera",
         email: "francisco.herrera@example.com",
-        fechaNacimiento: "1998-11-16",
-        localidad: "Argentina",
-        activo: false
+        birthDate: "1998-11-16",
+        location: "Argentina",
+        active: false
     }
 ];
 
-//? Mostrar Formulario
-add_user.addEventListener('click', () => {
-    btn_form.removeAttribute('id', 'btn_form')
-    mostrarFormulario()
-    btn_form.textContent = 'Agregar usuario';
-});
+//? Abrimos Formulario
+add_user.addEventListener('click', openForm)
 
-//? Ocultar Formulario
-darkLayer.addEventListener('click', ocultarFormulario);
+//? Cerramos Formulario
+darkLayer.addEventListener('click', closeForm)
 
-delete_selected.addEventListener('click', () => {
-    eliminarSeleccionados();
-})
-
-//? Agregar o editar usuario
+//? Insertamos/Editamos Usuario
 addUserForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const elemento = e.target;
+    e.preventDefault()
+    let element = e.target.elements
 
+    let id = (element.id.value) ? element.id.value : crypto.randomUUID();
 
-
-
-    //! Evaluamos si Editamos o insertamos usuario
-    let id = (elemento.id.value) ? elemento.id.value : crypto.randomUUID();
-
-    //? Si los datos estan en orden, se crea y se agrega el usuario
-    let nuevoUsuario = {
+    let user = {
         id: id,
-        nombre: elemento.name.value,
-        apellido: elemento.surname.value,
-        email: elemento.email.value,
-        fechaNacimiento: elemento.birthDate.value,
-        localidad: elemento.location.value,
-        activo: false
+        name: element.name.value,
+        lastName: element.lastName.value,
+        email: element.email.value,
+        birthDate: element.birthDate.value,
+        location: element.location.value,
+        active: false
     }
 
+    if (element.id.value) {
+        let editUser = users.find(user => user.id === element.id.value);
+        const changesMade =
+            editUser.name !== element.name.value ||
+            editUser.lastName !== element.lastName.value ||
+            editUser.email !== element.email.value ||
+            editUser.birthDate !== element.birthDate.value ||
+            editUser.location !== element.location.value;
 
+        if (changesMade) {
+            editUser.name = element.name.value;
+            editUser.lastName = element.lastName.value;
+            editUser.email = element.email.value;
+            editUser.birthDate = element.birthDate.value;
+            editUser.location = element.location.value;
 
-    if (elemento.id.value) {
-        usuarios.forEach(usuario => {
-            if (usuario.id === elemento.id.value) {
-                const cambiosRealizados =
-                    usuario.nombre !== elemento.name.value ||
-                    usuario.apellido !== elemento.surname.value ||
-                    usuario.email !== elemento.email.value ||
-                    usuario.fechaNacimiento !== elemento.birthDate.value ||
-                    usuario.localidad !== elemento.location.value;
-
-                if (cambiosRealizados) {
-                    usuario.nombre = elemento.name.value;
-                    usuario.apellido = elemento.surname.value;
-                    usuario.email = elemento.email.value;
-                    usuario.fechaNacimiento = elemento.birthDate.value;
-                    usuario.localidad = elemento.location.value;
-
-                    Swal.fire({
-                        title: '¡Cambios guardados!',
-                        text: 'Los cambios en el usuario se han guardado correctamente.',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                } else {
-                    Swal.fire(
-                        'Sin cambios',
-                        'No se realizaron cambios en el usuario.',
-                        'info'
-                    );
-                }
-
-                return;
-            }
-        });
+            Swal.fire({
+                title: '¡Cambios guardados!',
+                text: 'Los cambios en el usuario se han guardado correctamente.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        } else {
+            Swal.fire(
+                'Sin cambios',
+                'No se realizaron cambios en el usuario.',
+                'info'
+            );
+        }
     } else {
-        //! Email ya existe
-        const usuarioExistente = usuarios.find(usuario => usuario.email === elemento.email.value);
-        if (usuarioExistente) {
+        //! E-Mail existente
+        const existingUser = users.find(user => user.email === element.email.value);
+        if (existingUser) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: '¡El correo electrónico ya existe!',
             });
-            return;
+            return
         }
-        usuarios.push(nuevoUsuario);
+        users.push(user)
     }
+    closeForm()
+    showUsers()
+})
 
-    ocultarFormulario();
-    mostrarUsuarios();
-});
-
-//? Buscar usuario
+//? Buscamos Usuarios
 search.addEventListener('keyup', (e) => {
     const normalizeString = (str) => {
         return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     };
 
-    const inputValue = normalizeString(e.target.value.toLowerCase());
-    const usuarioFiltrado = usuarios.filter((usuario) =>
-        normalizeString(usuario.nombre.toLowerCase()).includes(inputValue)
+    const search = normalizeString(e.target.value.toLowerCase());
+    const userFiltered = users.filter((user) =>
+        normalizeString(user.name.toLowerCase()).includes(search)
     );
-    mostrarUsuarios(usuarioFiltrado);
+
+    showUsers(userFiltered)
+
 })
 
-function mostrarUsuarios(usuarioFiltrado) {
+//? Eliminamos Usuarios
+delete_selected.addEventListener('click', removeSelected)
+
+function showUsers(filter) {
     tableBody.innerHTML = ''
-    let array = (usuarioFiltrado === undefined || '') ? usuarios : usuarioFiltrado
-    array.forEach((usuario, i) => {
-        tableBody.innerHTML += `
-            <tr>
-            <td class="td_checkbox"><input type="checkbox" id="select_user" class="select_user"></td>
-            <td>${usuario.nombre} ${usuario.apellido}</td>
-            <td>${usuario.email}</td>
-            <td>${usuario.fechaNacimiento}</td>
-            <td>${usuario.localidad}</td>
-            <td><i class="edit_icon fas fa-edit" onclick="editarUsuario('${usuario.id}')"></i></td>
-            <td><i class="delete_icon fas fa-trash-alt" onclick="eliminarUsuario(${i})"></i></td>
-            </tr>
+    let array = (filter === undefined || '') ? users : filter
+    array.forEach((user, i) => {
+        tableBody.innerHTML +=
             `
+        <tr>
+            <td class="td_checkbox"><input type="checkbox" id="select_user" class="select_user"></td>
+            <td>${user.name} ${user.lastName}</td>
+            <td>${user.email}</td>
+            <td>${user.birthDate}</td>
+            <td>${user.location}</td>
+            <td><i class="edit_icon fas fa-edit" onclick="editUser('${user.id}')"></i></td>
+            <td><i class="delete_icon fas fa-trash-alt" onclick="deleteUser(${i})"></i></td>
+        </tr>
+        `
     });
-    delete_selected.style.display = (usuarios.length === 0) ? 'none' : 'block';
+    delete_selected.style.display = (users.length === 0) ? 'none' : 'block';
 }
-mostrarUsuarios()
+showUsers()
 
-function editarUsuario(id) {
-    const userEdit = usuarios.find((usuario) => {
-        if (usuario.id === id) {
-            console.log(`Se encontro el usurio con el ID: ${usuario.id}`)
-            return true;
-        }
-    })
+function editUser(userId) {
+    let userFound = users.find((user => user.id === userId))
 
-    if (!userEdit) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: '¡El usuario a editar no existe!',
-        });
-        return
-    }
-
-    mostrarFormulario()
-
-    const el = addUserForm.elements
-    el.id.value = userEdit.id
-    el.name.value = userEdit.nombre
-    el.surname.value = userEdit.apellido
-    el.email.value = userEdit.email
-    el.birthDate.value = userEdit.fechaNacimiento
-    el.location.value = userEdit.localidad
-
+    let element = addUserForm.elements
+    element.id.value = userFound.id
+    element.name.value = userFound.name
+    element.lastName.value = userFound.lastName
+    element.email.value = userFound.email
+    element.birthDate.value = userFound.birthDate
+    element.location.value = userFound.location
     btn_form.setAttribute('id', 'btn_form')
-    btn_form.textContent = 'Guardar cambios'
+    btn_form.textContent = 'Guardar Usuario'
+    openForm()
 }
 
-function eliminarUsuario(i) {
+function deleteUser(i) {
     Swal.fire({
         title: '¿Estás seguro?',
         text: 'Esta acción eliminará al usuario. ¿Estás seguro de continuar?',
@@ -310,8 +279,8 @@ function eliminarUsuario(i) {
         confirmButtonText: 'Sí, eliminar usuario'
     }).then((result) => {
         if (result.isConfirmed) {
-            usuarios.splice(i, 1);
-            mostrarUsuarios();
+            users.splice(i, 1);
+            showUsers();
             Swal.fire({
                 title: '¡Eliminado!',
                 text: 'El usuario ha sido eliminado correctamente.',
@@ -323,7 +292,7 @@ function eliminarUsuario(i) {
     });
 }
 
-function eliminarSeleccionados() {
+function removeSelected() {
     Swal.fire({
         title: '¿Estás seguro?',
         text: 'Esta acción eliminará a los usuarios seleccionados. ¿Estás seguro de continuar?',
@@ -334,9 +303,9 @@ function eliminarSeleccionados() {
         confirmButtonText: 'Sí, eliminar usuario'
     }).then((result) => {
         if (result.isConfirmed) {
-            const usuariosActivos = usuarios.filter(usuario => !usuario.activo);
-            usuarios = usuariosActivos;
-            mostrarUsuarios();
+            const activeUsers = users.filter(user => !user.active);
+            users = activeUsers;
+            showUsers();
             Swal.fire({
                 title: '¡Eliminado!',
                 text: 'El usuario ha sido eliminado correctamente.',
@@ -348,15 +317,17 @@ function eliminarSeleccionados() {
     });
 }
 
-function mostrarFormulario() {
-    addUserForm.id = 'addUserForm';
-    darkLayer.id = 'darkLayer';
+function openForm() {
+    darkLayer.setAttribute('id', 'darkLayer');
+    addUserForm.setAttribute('id', 'addUserForm');
 }
 
-function ocultarFormulario() {
-    addUserForm.removeAttribute('id');
-    darkLayer.removeAttribute('id');
+function closeForm() {
+    darkLayer.removeAttribute('id', 'darkLayer');
+    addUserForm.removeAttribute('id', 'addUserForm');
     addUserForm.reset()
+    btn_form.removeAttribute('id', 'btn_form')
+    btn_form.textContent = 'Agregar Usuario'
 }
 
 th_checkbox.addEventListener('click', () => {
@@ -372,14 +343,10 @@ document.querySelector('.tableBody').addEventListener('click', (event) => {
 
     if (checkbox) {
         const index = Array.from(checkbox.closest('tr').parentElement.children).indexOf(checkbox.closest('tr'));
-
-        if (checkbox.checked) {
-            usuarios[index].activo = true;
-            console.log(`El checkbox ${index} está marcado.`);
-        } else {
-            usuarios[index].activo = false;
-            console.log(`El checkbox ${index} no está marcado.`);
-        }
+        users[index].active = (checkbox.checked) ? true : false;
     }
 });
+
+
+
 
