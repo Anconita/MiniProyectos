@@ -168,50 +168,37 @@ addUserForm.addEventListener('submit', (e) => {
     }
 
     if (element.id.value) {
-        let editUser = users.find(user => user.id === element.id.value);
+        let indexUser = users.findIndex(user => user.id === element.id.value);
         const changesMade =
-            editUser.name !== element.name.value ||
-            editUser.lastName !== element.lastName.value ||
-            editUser.email !== element.email.value ||
-            editUser.birthDate !== element.birthDate.value ||
-            editUser.location !== element.location.value;
+            users[indexUser].name !== user.name ||
+            users[indexUser].lastName !== user.lastName ||
+            users[indexUser].email !== user.email ||
+            users[indexUser].birthDate !== user.birthDate ||
+            users[indexUser].location !== user.location;
 
-        if (changesMade) {
-            editUser.name = element.name.value;
-            editUser.lastName = element.lastName.value;
-            editUser.email = element.email.value;
-            editUser.birthDate = element.birthDate.value;
-            editUser.location = element.location.value;
-
-            Swal.fire({
-                title: '¡Cambios guardados!',
-                text: 'Los cambios en el usuario se han guardado correctamente.',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 2000
-            })
-        } else {
+        if (!changesMade) {
             Swal.fire(
                 'Sin cambios',
                 'No se realizaron cambios en el usuario.',
                 'info'
             );
+            return;
         }
+
+        users[indexUser] = user;
+        Swal.fire({
+            title: '¡Cambios guardados!',
+            text: 'Los cambios en el usuario se han guardado correctamente.',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 2000
+        });
+
     } else {
-        //! E-Mail existente
-        const existingUser = users.find(user => user.email === element.email.value);
-        if (existingUser) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: '¡El correo electrónico ya existe!',
-            });
-            return
-        }
         users.push(user)
     }
     closeForm()
-    showUsers()
+    showUsers(users)
 })
 
 //? Buscamos Usuarios
@@ -320,12 +307,14 @@ function removeSelected() {
 function openForm() {
     darkLayer.setAttribute('id', 'darkLayer');
     addUserForm.setAttribute('id', 'addUserForm');
+    addUserForm.elements.name.focus()
 }
 
 function closeForm() {
     darkLayer.removeAttribute('id', 'darkLayer');
     addUserForm.removeAttribute('id', 'addUserForm');
     addUserForm.reset()
+    addUserForm.elements.id.value = ''
     btn_form.removeAttribute('id', 'btn_form')
     btn_form.textContent = 'Agregar Usuario'
 }
