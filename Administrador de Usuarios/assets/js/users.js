@@ -185,6 +185,17 @@ addUserForm.addEventListener('submit', (e) => {
             return;
         }
 
+        //! E-Mail existente
+        const existingUser = users.find(user => user.email === element.email.value);
+        if (existingUser) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '¡El correo electrónico ya existe!',
+            });
+            return
+        }
+
         users[indexUser] = user;
         Swal.fire({
             title: '¡Cambios guardados!',
