@@ -195,6 +195,16 @@ addUserForm.addEventListener('submit', (e) => {
         });
 
     } else {
+        //! E-Mail existente
+        const existingUser = users.find(user => user.email === element.email.value);
+        if (existingUser) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '¡El correo electrónico ya existe!',
+            });
+            return
+        }
         users.push(user)
     }
     closeForm()
@@ -339,7 +349,3 @@ document.querySelector('.tableBody').addEventListener('click', (event) => {
         users[index].active = (checkbox.checked) ? true : false;
     }
 });
-
-
-
-
