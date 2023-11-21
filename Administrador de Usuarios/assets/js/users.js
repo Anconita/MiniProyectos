@@ -186,7 +186,7 @@ addUserForm.addEventListener('submit', (e) => {
         }
 
         //! E-Mail existente
-        const existingUser = users.find(user => user.email === element.email.value);
+        const existingUser = users.find(u => u.email === element.email.value && u.id !== element.id.value);
         if (existingUser) {
             Swal.fire({
                 icon: 'error',
@@ -253,7 +253,7 @@ function showUsers(filter) {
             <td>${user.birthDate}</td>
             <td>${user.location}</td>
             <td><i class="edit_icon fas fa-edit" onclick="editUser('${user.id}')"></i></td>
-            <td><i class="delete_icon fas fa-trash-alt" onclick="deleteUser(${i})"></i></td>
+            <td><i class="delete_icon fas fa-trash-alt" onclick="deleteUser('${user.id}')"></i></td>
         </tr>
         `
     });
@@ -276,7 +276,7 @@ function editUser(userId) {
     openForm()
 }
 
-function deleteUser(i) {
+function deleteUser(userId) {
     Swal.fire({
         title: '¿Estás seguro?',
         text: 'Esta acción eliminará al usuario. ¿Estás seguro de continuar?',
@@ -286,19 +286,20 @@ function deleteUser(i) {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, eliminar usuario'
     }).then((result) => {
-        if (result.isConfirmed) {
-            users.splice(i, 1);
-            showUsers();
-            Swal.fire({
-                title: '¡Eliminado!',
-                text: 'El usuario ha sido eliminado correctamente.',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 1000
-            });
-        }
+        let userFound = users.findIndex((user => user.id === userId))
+        userFound = userFound;
+        users.splice(userFound, 1)
+        showUsers()
+        Swal.fire({
+            title: '¡Eliminado!',
+            text: 'El usuario ha sido eliminado correctamente.',
+            icon: 'success',
+            showConfirmButton: false,
+            timer: 1000
+        });
     });
 }
+
 
 function removeSelected() {
     Swal.fire({
