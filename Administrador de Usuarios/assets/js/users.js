@@ -286,17 +286,19 @@ function deleteUser(userId) {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, eliminar usuario'
     }).then((result) => {
-        let userFound = users.findIndex((user => user.id === userId))
-        userFound = userFound;
-        users.splice(userFound, 1)
-        showUsers()
-        Swal.fire({
-            title: '¡Eliminado!',
-            text: 'El usuario ha sido eliminado correctamente.',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1000
-        });
+        if (result.isConfirmed) {
+            let userFound = users.findIndex((user => user.id === userId));
+            userFound = userFound;
+            users.splice(userFound, 1);
+            showUsers();
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'El usuario ha sido eliminado correctamente.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
     });
 }
 
