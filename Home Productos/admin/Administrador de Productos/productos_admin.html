@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <title>Administrador de productos</title>
+</head>
+
+<body>
+    <div class="darkLayer"></div>
+    <header>
+        <img class="logo" src="./assets/img/logo.png" title="Logo Administrador">
+    </header>
+    <main>
+        <section class="menu_section">
+            <ul>
+                <a id="usersLink" href="../Administrador de Usuarios/usuarios_admin.html">
+                    <li>
+                        <i class="fa-solid fa-address-book"></i>
+                        Usuarios
+                    </li>
+                </a>
+                <li class="active">
+                    <i class="fa-brands fa-product-hunt"></i>
+                    Productos
+                </li>
+                <li>
+                    <i class="fa-solid fa-gear"></i>
+                    Configuración
+                </li>
+            </ul>
+
+            <div class="contenedor_btn_actualizarCuenta">
+                <button id="btn_actualizarCuenta">Actualizar a Pro</button>
+            </div>
+        </section>
+        <section class="data_section">
+            <h2>Lista de Productos</h2>
+            <input type="search" class="search" name="search" placeholder="Buscar por Nombre">
+            <div class="table_container">
+                <table class="user_table">
+                    <thead class="tableHead">
+                        <tr>
+                            <th class="th_checkbox">Tds.</th>
+                            <th>Nombre Producto</th>
+                            <th>Precio</th>
+                            <th>Descripcion</th>
+                            <th>Tipo</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tableBody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="container_actionButtons">
+                <button class="delete_selected">Eliminar Seleccionados</button>
+                <button class="add_user">Añadir Nuevo Producto</button>
+            </div>
+        </section>
+
+        <form class="addUserForm">
+
+            <input type="hidden" name="id" id="id">
+
+            <label for="productName">Nombre Producto:</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <label for="price">Precio:</label>
+            <input type="text" id="price" name="price" required>
+
+            <select id="type" name="type" required>
+                <option value="" disabled selected>Seleccione tipo de zapatilla</option>
+                <option value="Running">Running</option>
+                <option value="Mountain">Mountain</option>
+            </select>
+
+            <label for="description">Descripción:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <button class="btn_form" type="submit">Agregar Producto</button>
+        </form>
+
+    </main>
+
+
+    <!--? SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!--? FontAwesome -->
+    <script src="https://kit.fontawesome.com/06574022d8.js" crossorigin="anonymous"></script>
+
+    <!--? Administrador de Productos -->
+    <script src="./assets/js/products.js"></script>
+</body>
+
+</html>
