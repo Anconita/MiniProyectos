@@ -104,6 +104,19 @@
   }
 }
 
-@media screen and (max-width: 480px) {}
+@media screen and (max-width: 480px) {
+  .container_actionButtons{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 25px;
+  }
+
+  .add_user {
+    order: -1;
+  }
+}
 
 @media screen and (max-width: 380px) {}
