@@ -27,9 +27,14 @@
 }
 
 @media screen and (max-width: 480px) {
+  header {
+    height: 70px;
+  }
+
   .mobile-menu {
     min-width: 200px;
   }
+  
 }
 
 @media screen and (max-width: 380px) {
