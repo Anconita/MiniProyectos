@@ -13,9 +13,39 @@
     <div class="darkLayer"></div>
     <header>
         <img class="logo" src="./assets/img/logo.png" title="Logo Administrador">
+        <div class="menu-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="menu_section mobile-menu">
+            <ul>
+                <ul>
+                    <li class="active">
+                        <i class="fa-solid fa-address-book"></i>
+                        Usuarios
+                    </li>
+                    <a id="productsLink" href="../Administrador de Productos/productos_admin.html">
+                        <li>
+                            <i class="fa-brands fa-product-hunt"></i>
+                            Productos
+                        </li>
+                    </a>
+                    <li>
+                        <i class="fa-solid fa-gear"></i>
+                        Configuración
+                    </li>
+                </ul>
+
+                <div class="contenedor_btn_actualizarCuenta">
+                    <button id="btn_actualizarCuenta">Actualizar a Pro</button>
+                </div>
+            </ul>
+        </div>
     </header>
     <main>
-        <section class="menu_section">
+        <section class="menu_section desktop">
             <ul>
                 <li class="active">
                     <i class="fa-solid fa-address-book"></i>
@@ -38,8 +68,10 @@
             </div>
         </section>
         <section class="data_section">
-            <h2>Lista de Usuarios</h2>
-            <input type="search" class="search" name="search" placeholder="Buscar por Nombre">
+            <div class="titleContainer">
+                <h2>Lista de Usuarios</h2>
+                <input type="search" class="search" name="search" placeholder="Buscar por Nombre">
+            </div>
             <div class="table_container">
                 <table class="user_table">
                     <thead class="tableHead">
@@ -108,6 +140,7 @@
     <script src="https://kit.fontawesome.com/06574022d8.js" crossorigin="anonymous"></script>
 
     <!--? Administrador de Usuarios -->
+    <script src="./assets/js/main.js"></script>
     <script src="./assets/js/users.js"></script>
 </body>
 
