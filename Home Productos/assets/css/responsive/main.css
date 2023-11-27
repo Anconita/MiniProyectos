@@ -75,10 +75,6 @@
 }
 
 @media screen and (max-width: 380px) {
-    .intro img {
-        height: 35vh;
-    }
-
     .intro div {
         height: 60%; 
     }
