@@ -14,6 +14,11 @@
   text-decoration: none;
 }
 
+#homeLink{
+  color: white;
+  text-decoration: none;
+}
+
 #darkLayer {
   display: block;
 }

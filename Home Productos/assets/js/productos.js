@@ -33,29 +33,3 @@ function updateLocalStorage() {
     localStorage.setItem('products', JSON.stringify(products));
 }
 updateLocalStorage()
-
-//? Formularios
-const registerForm = document.querySelector('.registerForm');
-const btnRegister = document.querySelector('.btnRegister');
-const darkLayer = document.querySelector('.darkLayer');
-
-btnRegister.addEventListener('click', openForm);
-darkLayer.addEventListener('click', closeForm);
-
-function openForm() {
-    darkLayer.setAttribute('id', 'darkLayer');
-    registerForm.setAttribute('id', 'registerForm');
-    addUserForm.elements.name.focus()
-}
-
-function closeForm() {
-    darkLayer.removeAttribute('id', 'darkLayer');
-    registerForm.removeAttribute('id', 'registerForm');
-    resetForm()
-}
-
-function resetForm() {
-    registerForm.reset()
-    btn_form.removeAttribute('id', 'btn_form')
-}
-
