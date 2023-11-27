@@ -313,6 +313,7 @@ function deleteUser(userId) {
 }
 
 function removeSelected() {
+    const activeUsers = users.filter(user => !user.active);
     Swal.fire({
         title: '¿Estás seguro?',
         text: 'Esta acción eliminará a los usuarios seleccionados. ¿Estás seguro de continuar?',
