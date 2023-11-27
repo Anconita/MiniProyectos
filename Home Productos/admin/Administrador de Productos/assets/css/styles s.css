@@ -9,7 +9,7 @@
   z-index: 3;
 }
 
-#productsLink {
+#usersLink{
   color: white;
   text-decoration: none;
 }
@@ -21,9 +21,6 @@
 header {
   position: fixed;
   background-color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   top: 0;
   left: 0;
   z-index: 2;
@@ -96,11 +93,6 @@ main {
   background-color: #55626e;
 }
 
-#usersLink{
-  color: white;
-  text-decoration: none;
-}
-
 .contenedor_btn_actualizarCuenta {
   align-items: center;
   display: flex;
@@ -141,34 +133,20 @@ main {
   margin-right: 5%;
 }
 
-.titleContainer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  border-radius: 8px; 
-  margin-bottom: 20px; 
-}
-
-.titleContainer h2 {
-  color: #333; 
-  margin: 0; 
-  font-size: 24px; 
+h2 {
+  color: #333;
 }
 
 .search {
-  padding: 10px; 
-  border: 1px solid #ccc;
-  border-radius: 5px; 
-  font-size: 16px;
-  width: 200px; 
-  outline: #3498db;
+  width: max-content;
+  padding: 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  margin-top: 15px;
+  transition: border-color 0.3s;
 }
-
-.search::placeholder {
-  color: #aaa;
-}
-
 
 .search:focus {
   border-color: #007bff;
@@ -314,30 +292,6 @@ main {
   visibility: visible;
 }
 
-.addUserForm textarea {
-  width: 100%;
-  padding: 8px;
-  font-size: 15px;
-  margin-bottom: 16px;
-  height: 150px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  resize: none;
-}
-
-.addUserForm textarea:hover {
-  border-color: #3498db;
-}
-
-.addUserForm textarea:focus {
-  border-color: #3498db;
-  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
-}
-
 .addUserForm input,
 .addUserForm select {
   width: 100%;
@@ -370,11 +324,36 @@ main {
 
 .addUserForm input {
   width: 100%;
+  font-size: 15px;
   padding: 8px;
   margin-bottom: 16px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.addUserForm textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 15px;
+  margin-bottom: 16px;
+  height: 150px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+
+.addUserForm textarea:hover {
+  border-color: #3498db;
+}
+
+.addUserForm textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
 }
 
 .addUserForm select {
@@ -416,47 +395,4 @@ main {
 
 #btn_form:active {
   background-color: #3d8b40;
-}
-
-/*Mobile*/
-
-.mobile-menu{
-  display: none;
-}
-
-.menu-icon {
-  width: 50px;
-  height: 50px;
-  background-color: rgb(255, 255, 255);
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  transition: background-color 0.3s;
-}
-
-.menu-icon span {
-  width: 40px;
-  height: 3px;
-  background-color: #222;
-  transition: transform .3s, opacity .3s;
-  border: none;
-}
-
-.menu-icon.active_menu {
-  border-radius: 50px;
-}
-
-.menu-icon.active_menu span:nth-child(1) {
-  transform: rotate(-45deg) translate(-13px, 6px);
-}
-
-.menu-icon.active_menu span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-icon.active_menu span:nth-child(3) {
-  transform: rotate(45deg) translate(-12px, -6px);
 }

@@ -5,6 +5,7 @@ const tableBody = document.querySelector('.tableBody');
 const delete_selected = document.querySelector('.delete_selected');
 const btn_form = document.querySelector('.btn_form');
 const search = document.querySelector('.search');
+const th_checkbox = document.querySelector('.th_checkbox');
 
 const productsStart = [
     {
@@ -86,6 +87,7 @@ add_user.addEventListener('click', openForm)
 //? Cerramos Formulario
 darkLayer.addEventListener('click', closeForm)
 
+//? Insertamos/Editamos Producto
 addUserForm.addEventListener('submit', (e) => {
     e.preventDefault()
     let element = e.target.elements;
@@ -102,7 +104,34 @@ addUserForm.addEventListener('submit', (e) => {
 
     if (element.id.value) {
         let indexProduct = products.findIndex((product => product.id === element.id.value))
-        products[indexProduct] = product;
+        products[indexProduct].price = parseInt(products[indexProduct].price);
+        product.price = parseInt(product.price);
+
+        const changesMade =
+            products[indexProduct].productName !== product.productName ||
+            products[indexProduct].price !== product.price ||
+            products[indexProduct].type !== product.type ||
+            products[indexProduct].description !== product.description;
+
+        if (!changesMade) {
+            Swal.fire(
+                'Sin cambios',
+                'No se realizaron cambios en el producto.',
+                'info'
+            );
+            return
+        } else {
+            products[indexProduct] = product;
+            Swal.fire({
+                title: '¡Cambios guardados!',
+                text: 'Los cambios en el producto se han guardado correctamente.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        }
+
+
     } else {
         products.push(product);
     }
@@ -113,11 +142,15 @@ addUserForm.addEventListener('submit', (e) => {
 
 })
 
+//? Buscamos productos
 search.addEventListener('keyup', (e) => {
     const value = e.target.value.toLowerCase();
     const filterProduct = products.filter((product => product.productName.toLowerCase().includes(value)))
     showProducts(filterProduct)
 })
+
+//? Eliminamos Productos
+delete_selected.addEventListener('click', removeSelected)
 
 function showProducts(filter) {
     if (tableBody) tableBody.innerHTML = ''
@@ -142,15 +175,36 @@ showProducts()
 
 function deleteProduct(productId) {
     let productIndex = products.findIndex((product => product.id === productId))
-    products.splice(productIndex, 1)
-    updateLocalStorage();
-    showProducts()
+    Swal.fire({
+        title: `¿Deseas Eliminar ${products[productIndex].productName}?`,
+        text: 'Esta acción eliminará el producto. ¿Estás seguro de continuar?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar usuario'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            let productIndex = products.findIndex((product => product.id === productId))
+            products.splice(productIndex, 1)
+            updateLocalStorage();
+            showProducts()
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'El usuario ha sido eliminado correctamente.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            });
+            updateLocalStorage()
+        }
+    });
 }
 
 function updateProduct(productId) {
-    const element = addUserForm.elements
     const foundProduct = products.find((product => product.id === productId))
 
+    const element = addUserForm.elements
     element.id.value = foundProduct.id
     element.productName.value = foundProduct.productName
     element.price.value = foundProduct.price
@@ -160,6 +214,31 @@ function updateProduct(productId) {
 
     btn_form.textContent = 'Editar Producto'
     openForm()
+}
+
+function removeSelected() {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción eliminará a los productos seleccionados. ¿Estás seguro de continuar?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar usuario'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const activeProducts = products.filter(product => !product.active);
+            products = activeProducts;
+            showProducts();
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'Los productos han sido eliminado correctamente.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000
+            });
+        }
+    });
 }
 
 function openForm() {
@@ -184,3 +263,20 @@ function resetForm() {
 function updateLocalStorage() {
     localStorage.setItem('products', JSON.stringify(products));
 }
+
+th_checkbox.addEventListener('click', () => {
+    const checkboxes = document.querySelectorAll('.select_user_body');
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.checked = th_checkbox.checked;
+    });
+});
+
+document.querySelector('.tableBody').addEventListener('click', (event) => {
+    const checkbox = event.target.closest('.select_user');
+
+    if (checkbox) {
+        const index = Array.from(checkbox.closest('tr').parentElement.children).indexOf(checkbox.closest('tr'));
+        products[index].active = (checkbox.checked) ? true : false;
+    }
+});

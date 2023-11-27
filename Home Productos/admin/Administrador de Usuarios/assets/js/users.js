@@ -284,7 +284,6 @@ function editUser(userId) {
 }
 
 function deleteUser(userId) {
-    let userFound = users.findIndex((user => user.id === userId));
     Swal.fire({
         title: `¿Deseas Eliminar a ${users[userFound].name}?`,
         text: 'Esta acción eliminará al usuario. ¿Estás seguro de continuar?',

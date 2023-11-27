@@ -65,6 +65,32 @@ header {
   cursor: pointer;
 }
 
+.meta-header i {
+  font-size: 24px;
+}
+
+.btn-header {
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-header:hover {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.btn-header:active {
+  background-color: #2f89c6;
+  color: #fff;
+}
+
+
+
 .user-container {
   display: flex;
   align-items: center;
@@ -78,6 +104,123 @@ header {
 .user-container:hover p,
 .user-container:hover i {
   color: #3498db;
+}
+
+.darkLayer {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+#darkLayer {
+  display: block;
+}
+
+.registerForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  opacity: 0;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  width: 300px;
+  visibility: hidden;
+  transition: transform .3s ease-in-out, opacity .5s ease-in-out;
+  z-index: 4;
+}
+
+#registerForm {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  visibility: visible;
+}
+
+.registerForm input,
+.registerForm select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.registerForm input:hover,
+.registerForm select:hover {
+  border-color: #3498db;
+}
+
+.registerForm input:focus,
+.registerForm select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+.registerForm label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.registerForm input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registerForm select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.registerForm button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registerForm button:hover {
+  background-color: #2980b9;
+}
+
+.registerForm button:active {
+  background-color: #1f618d;
+  box-shadow: 0 0 8px rgba(41, 128, 185, 0.8);
+  transform: translateY(2px);
+}
+
+#btn_form {
+  background-color: #4CAF50;
+}
+
+#btn_form:hover {
+  background-color: #45a049;
+}
+
+#btn_form:active {
+  background-color: #3d8b40;
 }
 
 /* Mobile */
@@ -121,7 +264,7 @@ header {
 .mobile-menu {
   background-color: #333;
   position: fixed;
-  top: 69px;
+  top: 80px;
   height: max-content;
   right: 0;
   width: 30%;
@@ -129,13 +272,13 @@ header {
   padding: 20px;
   box-sizing: border-box;
   z-index: 1;
-  opacity: 0; 
-  transform: translateX(100%); 
-  border-bottom: 2px solid #3498db;
+  opacity: 0;
+  transform: translateX(100%);
+  border-bottom: 5px solid #3498db;
   text-align: center;
   border-radius: 0px 0px 0px 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  transition: opacity 0.3s, transform 0.3s; 
+  transition: opacity 0.3s, transform 0.3s;
 }
 
 .mobile-menu ul {
@@ -158,14 +301,14 @@ header {
   margin: 15px 0;
 }
 
-.mobile-menu a {
+.mobile-menu ul li a {
   color: #fff;
   text-decoration: none;
   font-size: 1.2rem;
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.mobile-menu a:hover {
+.mobile-menu ul li a:hover {
   color: #3498db;
   transform: translateX(5px);
 }

@@ -1,4 +1,4 @@
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 960px) {
   header {
     top: 0;
     left: 0;
@@ -24,6 +24,24 @@
     opacity: 1;
     transform: translateX(0);
   }
+
+  .btn-header-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    gap: 25px;
+    width: 80%;
+    margin: auto;
+  }
+
+  .btn-header {
+    padding: 8px 18px;
+    margin: 0px;
+  }
+
+  .btn-header {
+    color: #fff;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -34,7 +52,11 @@
   .mobile-menu {
     min-width: 200px;
   }
-  
+
+  .mobile-menu {
+    top: 70px;
+  }
+
 }
 
 @media screen and (max-width: 380px) {
@@ -54,11 +76,11 @@
   .menu-icon.active span:nth-child(1) {
     transform: rotate(-45deg) translate(-11px, 7px);
   }
-  
+
   .menu-icon.active span:nth-child(2) {
     opacity: 0;
   }
-  
+
   .menu-icon.active span:nth-child(3) {
     transform: rotate(45deg) translate(-8px, -4px);
   }

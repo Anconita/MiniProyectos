@@ -6,7 +6,7 @@ const search = document.querySelector('.search');
 const btn_form = document.querySelector('.btn_form');
 const delete_selected = document.querySelector('.delete_selected')
 const th_checkbox = document.querySelector('.th_checkbox')
-let users = [
+let usersStart = [
     {
         id: crypto.randomUUID(),
         name: "Juan",
@@ -144,6 +144,12 @@ let users = [
     }
 ];
 
+if(localStorage.getItem('users') === null){
+    localStorage.setItem('users', JSON.stringify(usersStart));
+}
+
+let users = JSON.parse(localStorage.getItem('users'))
+
 //? Abrimos Formulario
 add_user.addEventListener('click', openForm)
 
@@ -219,6 +225,7 @@ addUserForm.addEventListener('submit', (e) => {
         users.push(user)
     }
     closeForm()
+    updateLocalStorage()
     showUsers(users)
 })
 
@@ -298,10 +305,12 @@ function deleteUser(userId) {
                 showConfirmButton: false,
                 timer: 1000
             });
+            updateLocalStorage()
         }
     });
-}
 
+    
+}
 
 function removeSelected() {
     Swal.fire({
@@ -345,6 +354,10 @@ function resetForm() {
     addUserForm.elements.id.value = ''
     btn_form.removeAttribute('id', 'btn_form')
     btn_form.textContent = 'Agregar Usuario'
+}
+
+function updateLocalStorage() { 
+    localStorage.setItem('users', JSON.stringify(users));
 }
 
 th_checkbox.addEventListener('click', () => {
