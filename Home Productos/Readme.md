@@ -14,6 +14,10 @@ Visita la aplicación en [runpeak-store.netlify.app](https://runpeak-store.netli
 
 ![Vista previa de la página de inicio](https://github.com/Anconita/MiniProyectos/assets/99112245/b6606055-5c62-49f6-a626-0b84f630c211)
 
+## Captura de Pantalla - Administrador de Usuarios
+
+![Vista previa del administrador de usuarios](https://github.com/Anconita/MiniProyectos/assets/99112245/c8e5e322-51ce-46f2-8d73-15e22070cdc1)
+
 ## Características Principales
 
 - **Diseño Responsive:** Interfaz adaptable para una experiencia óptima en diferentes dispositivos.
