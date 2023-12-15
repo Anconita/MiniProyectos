@@ -138,7 +138,7 @@ hr {
 
 }
 
-.product button {
+.product a {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -151,15 +151,16 @@ hr {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.2s ease-in-out;
   background-color: #3498db;
   color: #ffffff;
+  text-decoration: none;
 }
 
-.product button:hover {
+.product a:hover {
   background-color: #2980b9;
   color: #ffffff;
   transform: scale(1.1);
 }
 
-.product button:focus {
+.product a:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(52, 152, 219, 0.7);
 }
